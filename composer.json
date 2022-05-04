@@ -1,0 +1,63 @@
+{
+	"name": "web6/elementor-starter",
+	"description": "Elementor Starter Plugin.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"homepage": "https://www.web6.cloud/",
+	"support": {
+		"issues": "https://github.com/w6cloud/elementor-starter/issues",
+		"source": "https://github.com/w6cloud/elementor-starter"
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"autoload": {
+		"exclude-from-classmap": [
+			"/tests/"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"W6\\ElementorStarter\\Tests\\PHP\\": "tests/php/",
+			"W6\\ElementorStarter\\Tests\\PHP\\Unit\\": "tests/php/unit/",
+			"W6\\ElementorStarter\\Tests\\PHP\\Integration\\": "tests/php/integration/"
+		}
+	},
+	"require": {
+		"php": ">=7.4",
+		"friendsofphp/php-cs-fixer": "^3.8"
+	},
+	"require-dev": {
+		"brain/monkey": "*",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+		"phpunit/phpunit": "*",
+		"roave/security-advisories": "dev-master",
+		"sirbrillig/phpcs-variable-analysis": "*",
+		"squizlabs/php_codesniffer": "*",
+		"wimg/php-compatibility": "*",
+		"wp-coding-standards/wpcs": "*",
+		"automattic/vipwpcs": "^2.3"
+	},
+	"config": {
+		"sort-order": true,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"install-codestandards": [
+			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
+		],
+		"phpcs-src": "\"vendor/bin/phpcs\" src/",
+		"phpcs-tests": "\"vendor/bin/phpcs\" tests/php/",
+		"run-phpcs": [
+			"@phpcs-src",
+			"@phpcs-tests"
+		],
+		"test-unit": "\"vendor/bin/phpunit\" --testsuite unit --color=always",
+		"test-integration": "\"vendor/bin/phpunit\" --testsuite integration --configuration tests/php/integration/phpunit.xml.dist --color=always",
+		"run-tests": [
+			"@test-unit",
+			"@test-integration"
+		]
+	}
+}

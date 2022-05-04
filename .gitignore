@@ -11,3 +11,9 @@ Thumbs.db
 
 *.log
 *.map
+
+composer.lock
+/node_modules/
+/vendor/
+/logs/
+/reports/
